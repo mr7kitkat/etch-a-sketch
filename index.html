@@ -6,6 +6,56 @@
     <title>Etch A Sketch</title>
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <script src="./scripts/main.js" defer></script>
   </head>
-  <body></body>
+  <body class="flex">
+    <section class="board">
+      <section class="menu flex">
+        <!-- The Pencil Tool -->
+        <label for="pencil">
+          <input type="radio" name="inputTool" id="pencil" class="hidden" />
+          <figure>
+            <img src="./images/pencil.png" alt="pencil" />
+            <figcaption>Pencil</figcaption>
+          </figure>
+        </label>
+        <!-- Eraser -->
+        <label for="eraser">
+          <input type="radio" name="inputTool" id="eraser" class="hidden" />
+          <figure>
+            <img src="./images/eraser.png" alt="eraser" />
+            <figcaption>Eraser</figcaption>
+          </figure>
+        </label>
+        <!-- Current Color -->
+        <div class="currentColor"></div>
+
+        <!-- The Random Color -->
+        <label for="randomColor" class="switch">
+          <input type="checkbox" name="randomColor" id="randomColor" />
+          <span class="slider round"></span>
+        </label>
+
+        <section class="flex">
+          <input type="range" name="gridSize" id="gridSize" />
+          <input type="submit" value="Make Grid" />
+        </section>
+
+        <!-- color picker tool -->
+        <label for="colorPicker">
+          <input
+            type="color"
+            name="colorPicker"
+            id="colorPicker"
+            class="hidden"
+          />
+          <figure>
+            <img src="./images/colorPicker.png" alt="Color Picker" />
+            <figcaption>Color Picker</figcaption>
+          </figure>
+        </label>
+      </section>
+      <section class="canvas"></section>
+    </section>
+  </body>
 </html>

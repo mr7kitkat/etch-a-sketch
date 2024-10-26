@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --normalsize: 16px;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background: url(https://www.toptal.com/designers/subtlepatterns/uploads/dark-grey-terrazzo.png)
+    black;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  height: 100vh;
+  width: 100%;
+  max-width: 720px;
+  border: 1px solid white;
+  flex-direction: column;
+}
+
+/* styling for menu section */
+.menu {
+  width: 100%;
+  background-color: white;
+  padding: var(--normalsize);
+}
+
+label {
+  width: auto;
+  height: 64px;
+  background-color: #2196f3;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+figure img {
+  width: 32px;
+  height: auto;
+}
+
+/*
+Toggle Switch button
+code link - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch 
+ */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  transform: scale(0.75);
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
