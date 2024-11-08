@@ -8,54 +8,44 @@
     <link rel="stylesheet" href="./styles/main.css" />
     <script src="./scripts/main.js" defer></script>
   </head>
-  <body class="flex">
-    <section class="board">
-      <section class="menu flex">
-        <!-- The Pencil Tool -->
-        <label for="pencil">
-          <input type="radio" name="inputTool" id="pencil" class="hidden" />
-          <figure>
-            <img src="./images/pencil.png" alt="pencil" />
-            <figcaption>Pencil</figcaption>
-          </figure>
-        </label>
-        <!-- Eraser -->
-        <label for="eraser">
-          <input type="radio" name="inputTool" id="eraser" class="hidden" />
-          <figure>
-            <img src="./images/eraser.png" alt="eraser" />
-            <figcaption>Eraser</figcaption>
-          </figure>
-        </label>
-        <!-- Current Color -->
-        <div class="currentColor"></div>
-
-        <!-- The Random Color -->
-        <label for="randomColor" class="switch">
-          <input type="checkbox" name="randomColor" id="randomColor" />
-          <span class="slider round"></span>
-        </label>
-
-        <section class="flex">
-          <input type="range" name="gridSize" id="gridSize" />
-          <input type="submit" value="Make Grid" />
-        </section>
-
-        <!-- color picker tool -->
-        <label for="colorPicker">
-          <input
-            type="color"
-            name="colorPicker"
-            id="colorPicker"
-            class="hidden"
-          />
-          <figure>
-            <img src="./images/colorPicker.png" alt="Color Picker" />
-            <figcaption>Color Picker</figcaption>
-          </figure>
-        </label>
-      </section>
+  <body>
+    <main>
       <section class="canvas"></section>
-    </section>
+      <button class="btn" data-status="0">MENU</button>
+      <section class="menu">
+        <!-- 1st tool -->
+        <label for="pencil" class="tool">
+          <input type="radio" name="input" id="pencil" class="hidden" />
+          <figure>
+            <img src="./images/pencil.png" alt="pencil image" />
+            <figcaption class="text">Pencil</figcaption>
+          </figure>
+        </label>
+        <!-- 2nd tool -->
+        <label for="eraser" class="tool">
+          <input type="radio" name="input" id="eraser" class="hidden" />
+          <figure>
+            <img src="./images/eraser.png" alt="eraser image" />
+            <figcaption class="text">Eraser</figcaption>
+          </figure>
+        </label>
+        <!-- 3rd tool -->
+        <label for="color" class="tool">
+          <input type="color" name="color" id="color" value="#000" class="w2" />
+          <span class="text">Current Color</span>
+        </label>
+        <!-- 4th tool -->
+        <label for="random" class="tool">
+          <input type="checkbox" name="random" id="random" />
+          <span class="text">Random Color</span>
+        </label>
+        <div for="number" class="tool">
+          <input type="number" form="number" class="w2" />
+          <input type="submit" value="Make Grid" class="w2" />
+        </div>
+
+        <input type="submit" id="downloadBtn" value="Download Art" />
+      </section>
+    </main>
   </body>
 </html>
