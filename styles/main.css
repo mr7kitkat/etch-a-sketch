@@ -96,7 +96,7 @@ div.tool input {
   font-size: var(--norm-size);
 }
 
-.workbtn {
+.btn {
   all: unset;
   font-size: var(--norm-size);
   display: inline-block;
@@ -110,7 +110,8 @@ div.tool input {
   align-self: stretch;
 }
 
-.workbtn:active {
+.btn:active,
+.btn:focus {
   background-color: #f10125;
   transform: translateY(1px);
   box-shadow: none;
@@ -118,35 +119,8 @@ div.tool input {
 
 label,
 input:not([form="number"]),
-.workbtn {
+.btn {
   cursor: pointer;
-}
-
-@keyframes framein {
-  0% {
-    transform: translateY(500px);
-  }
-  100% {
-    transform: translateY(-200px);
-  }
-}
-
-@keyframes frameout {
-  0% {
-    transform: translateY(-200px);
-  }
-
-  100% {
-    transform: translateY(500px);
-  }
-}
-
-.animate {
-  animation: framein 0.5s ease-in-out forwards;
-}
-
-.animate.remove {
-  animation: frameout 0.5s ease-in-out forwards;
 }
 
 @media screen and (max-width: 1080px) {
@@ -173,21 +147,35 @@ input:not([form="number"]),
   #downloadBtn {
     grid-column: 1 / 2;
   }
+
+  .btn {
+    font-size: 12px !important;
+  }
 }
 
 @media screen and (max-width: 425px) {
 }
 
 @media screen and (orientation: landscape) {
-  .btn {
+  #menubtn {
     display: none;
   }
 }
 
 @media screen and (orientation: portrait) {
+  body {
+    padding: 0px;
+    overflow: hidden;
+  }
+
   main {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .canvas {
+    margin: 10px;
   }
 
   .menu {
@@ -195,6 +183,7 @@ input:not([form="number"]),
     transform: translateY(500px);
     justify-content: space-evenly;
     border: 10px solid lightgray;
+    max-width: 320px;
   }
 
   div.tool,
@@ -204,7 +193,7 @@ input:not([form="number"]),
     grid-template-columns: 1fr 1fr;
   }
 
-  .btn {
+  #menubtn {
     all: unset;
     width: 100px;
     margin: 0 auto;
@@ -217,7 +206,7 @@ input:not([form="number"]),
     left: 40%;
   }
 
-  .btn:hover {
+  #menubtn:hover {
     background-color: #fff;
     color: #000;
     border: 1px solid #000;

@@ -6,12 +6,13 @@
     <title>Etch A Sketch</title>
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/animation.css" />
     <script src="./scripts/main.js" defer></script>
   </head>
   <body>
     <main>
       <section class="canvas"></section>
-      <button class="btn" data-status="0">MENU</button>
+      <button id="menubtn" data-status="0">MENU</button>
       <section class="menu">
         <!-- 1st tool -->
         <label for="pencil" class="tool">
@@ -41,14 +42,14 @@
         </label>
         <div for="number" class="tool">
           <input type="number" form="number" class="w2" />
-          <input type="submit" value="Make Grid" class="w2 workbtn" />
+          <input type="submit" value="Make Grid" class="w2 btn" />
         </div>
 
         <input
           type="submit"
           id="downloadBtn"
           value="Download Art"
-          class="workbtn"
+          class="btn"
         />
       </section>
     </main>

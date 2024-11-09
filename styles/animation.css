@@ -1,0 +1,26 @@
+@keyframes framein {
+  0% {
+    transform: translateY(500px);
+  }
+  100% {
+    transform: translateY(-250px);
+  }
+}
+
+@keyframes frameout {
+  0% {
+    transform: translateY(-250px);
+  }
+
+  100% {
+    transform: translateY(500px);
+  }
+}
+
+.animate {
+  animation: framein 0.5s ease-in-out forwards;
+}
+
+.animate.remove {
+  animation: frameout 0.5s ease-in-out forwards;
+}

@@ -1,6 +1,7 @@
+// Variable declarations
 const menu = document.querySelector(".menu");
-const button = document.querySelector(".btn");
-
+const button = document.querySelector("#menubtn");
+// Styling for menu popup
 button.addEventListener("click", function () {
   if (this.dataset.status == 0) {
     menu.classList.add("animate");
