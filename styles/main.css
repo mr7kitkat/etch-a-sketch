@@ -92,6 +92,62 @@ div.tool input {
   font-weight: bold;
 }
 
+@keyframes framein {
+  0% {
+    transform: translateY(500px);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes frameout {
+  0% {
+    transform: translateY(-200px);
+  }
+
+  100% {
+    transform: translateY(500px);
+  }
+}
+
+.animate {
+  animation: framein 0.5s ease-in-out forwards;
+}
+
+.animate.remove {
+  animation: frameout 0.5s ease-in-out forwards;
+}
+
+@media screen and (max-width: 1080px) {
+}
+
+@media screen and (max-width: 700px) {
+  main {
+    gap: 8px;
+  }
+  .menu {
+    padding: 4px;
+    grid-template-columns: 80px;
+    align-content: start;
+    gap: var(--norm-size);
+  }
+
+  .tool {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  div.tool,
+  #downloadBtn {
+    grid-column: 1 / 2;
+  }
+}
+
+@media screen and (max-width: 425px) {
+}
+
 @media screen and (orientation: landscape) {
   .btn {
     display: none;
@@ -122,11 +178,12 @@ div.tool input {
     width: 100px;
     margin: 0 auto;
     border: 1px solid #fff;
+    color: #fff;
     text-align: center;
     z-index: 2;
     position: absolute;
     bottom: 0;
-    left: 45%;
+    left: 40%;
   }
 
   .btn:hover {
@@ -134,31 +191,4 @@ div.tool input {
     color: #000;
     border: 1px solid #000;
   }
-}
-
-@keyframes framein {
-  0% {
-    transform: translateY(500px);
-  }
-  100% {
-    transform: translateY(-200px);
-  }
-}
-
-@keyframes frameout {
-  0% {
-    transform: translateY(-200px);
-  }
-
-  100% {
-    transform: translateY(500px);
-  }
-}
-
-.animate {
-  animation: framein 0.5s ease-in-out forwards;
-}
-
-.animate.remove {
-  animation: frameout 0.5s ease-in-out forwards;
 }
