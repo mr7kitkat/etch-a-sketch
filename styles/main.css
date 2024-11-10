@@ -41,6 +41,13 @@ main {
   max-width: var(--canvas-size);
   aspect-ratio: 1 / 1;
   cursor: crosshair;
+
+  display: grid;
+}
+
+.cell:hover {
+  background-color: #aaaaaa34;
+  border: 0.5px solid lightgray;
 }
 
 .menu {
@@ -111,8 +118,8 @@ div.tool input {
 }
 
 .btn:active,
-.btn:focus {
-  background-color: #f10125;
+.btn:focus-visible {
+  background-color: #7c0015;
   transform: translateY(1px);
   box-shadow: none;
 }
