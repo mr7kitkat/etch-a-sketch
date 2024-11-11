@@ -16,54 +16,54 @@
       <section class="menu">
         <!-- 1st tool -->
         <label for="pencil" class="tool">
-          <input type="radio" name="input" id="pencil" class="hidden" checked />
           <figure>
+            <input
+              type="radio"
+              name="input"
+              id="pencil"
+              class="hidden"
+              checked
+            />
             <img src="./images/pencil.png" alt="pencil image" />
             <figcaption class="text">Pencil</figcaption>
           </figure>
         </label>
         <!-- 2nd tool -->
         <label for="eraser" class="tool">
-          <input type="radio" name="input" id="eraser" class="hidden" />
           <figure>
+            <input type="radio" name="input" id="eraser" class="hidden" />
             <img src="./images/eraser.png" alt="eraser image" />
             <figcaption class="text">Eraser</figcaption>
           </figure>
         </label>
         <!-- 3rd tool -->
-        <label for="color" class="tool">
-          <input
-            type="color"
-            name="color"
-            id="color"
-            value="#000000"
-            class="w2"
-          />
-          <span class="text">Current Color</span>
-        </label>
-        <!-- 4th tool -->
         <label for="random" class="tool">
           <input type="checkbox" name="random" id="random" />
           <span class="text">Random Color</span>
         </label>
+        <!-- 4th tool -->
+
+        <label for="hovermode" class="tool">
+          <input type="checkbox" name="hovermode" id="hovermode" />
+          <span class="text">Hover Mode</span>
+        </label>
+
+        <!-- 5th tool -->
+        <label for="color" class="tool" id="currentColor">
+          <input type="color" name="color" id="color" value="#000000" />
+          <span class="text">Current Color</span>
+        </label>
+
+        <!-- 6th tool -->
+
         <div for="gridSize" class="tool">
-          <input
-            type="number"
-            id="gridSize"
-            class="w2"
-            value="16"
-            min="16"
-            max="100"
-          />
-          <button id="makeGrid" class="w2 btn">Make Grid</button>
+          <input type="number" id="gridSize" value="16" min="16" max="100" />
+          <button id="makeGrid" class="btn">Make Grid</button>
         </div>
 
-        <input
-          type="submit"
-          id="downloadBtn"
-          value="Download Art"
-          class="btn"
-        />
+        <!-- 7th tool -->
+
+        <button id="downloadBtn" class="btn">Download Art</button>
       </section>
     </main>
   </body>

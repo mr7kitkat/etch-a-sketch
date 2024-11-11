@@ -91,10 +91,15 @@ input {
 }
 
 div.tool,
-#downloadBtn {
+#downloadBtn,
+#currentColor {
   height: 100%;
   width: 100%;
   grid-column: 1 / 3;
+}
+
+#color {
+  width: 100%;
 }
 
 div.tool input {
@@ -128,9 +133,6 @@ label,
 input:not([form="number"]),
 .btn {
   cursor: pointer;
-}
-
-@media screen and (max-width: 1080px) {
 }
 
 @media screen and (max-width: 700px) {
@@ -186,16 +188,20 @@ input:not([form="number"]),
   }
 
   .menu {
-    grid-template-columns: repeat(4, 50px);
+    grid-template-columns: repeat(5, 50px);
     transform: translateY(500px);
     justify-content: space-evenly;
     border: 10px solid lightgray;
-    max-width: 320px;
+    max-width: 380px;
+  }
+
+  #currentColor {
+    grid-column: 5 / 6;
   }
 
   div.tool,
   #downloadBtn {
-    grid-column: 1 / 5;
+    grid-column: 1 / 6;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }

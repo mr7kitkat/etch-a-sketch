@@ -1,9 +1,12 @@
-// Variable declarations
+// ===========================================
+// ===========VARIABLE DECLARATIONS===========
+// ===========================================
 const menu = document.querySelector(".menu");
 const canvas = document.querySelector(".canvas");
 const pencil = document.querySelector("#pencil");
 const eraser = document.querySelector("#eraser");
 const color = document.querySelector("#color");
+const hovermode = document.querySelector("#hovermode");
 const random = document.querySelector("#random");
 const menuBtn = document.querySelector("#menubtn");
 const gridSize = document.querySelector("#gridSize");
@@ -11,11 +14,10 @@ const makeGrid = document.querySelector("#makeGrid");
 const MIN_GRID_SIZE = 16;
 const MAX_GRID_SIZE = 100;
 
-// 1st
-// generate default grid of size 32
+// ********* INITIAL SETUP ******************
 parsegrid(canvas);
 
-// Change grid size
+// IF ANY ATTEMPT HAPPENS TO CHANGE THE GRID SIZE HANDLE IT
 makeGrid.addEventListener("click", function () {
   const size = +gridSize.value;
   if (size >= MIN_GRID_SIZE && size <= MAX_GRID_SIZE) {
@@ -33,51 +35,135 @@ makeGrid.addEventListener("click", function () {
 // ==================================================
 // ============= HELPER FUNCTION SECTION ============
 // ==================================================
-// -
-// This function takes two parameter
-// 1 an ref to a node and 2nd size to make cells
-function parsegrid(canvas, size = MIN_GRID_SIZE) {
-  // making grid with css
-  canvas.setAttribute(
-    "style",
-    `grid-template-columns: repeat(${size}, 1fr); 
-    grid-template-rows: repeat(${size}, 1fr);`
-  );
 
-  // making child elements
-  let html_childs = "";
+// *****************************************************************
+// BELOW THIS IS MY WRITTEN CODE WHICH TAKE TWO PARAMETER
+// CANVAS = A DOM NODE
+// SIZE = SIZE OF WHICH, WE NEED GRID
+//
+// function parsegrid(canvas, size = MIN_GRID_SIZE) {
+//   // making grid with css
+//   canvas.setAttribute(
+//     "style",
+//     `grid-template-columns: repeat(${size}, 1fr);
+//     grid-template-rows: repeat(${size}, 1fr);`
+//   );
+
+//   // making child elements
+//   let html_childs = "";
+//   for (let i = 0; i < size; i++) {
+//     for (let j = 0; j < size; j++) {
+//       html_childs += `
+//       <div class="cell"
+//       data-cellref="R${i + 1}C${j + 1}">
+//       </div>`;
+//     }
+//   }
+
+//   canvas.innerHTML = html_childs;
+//   cell_click_events();
+// }
+// *****************************************************************
+
+// This code is taken from code review of CHAT GPT
+// I like the Approach of "DOM fragment" which make
+// a temproray place in memory to update DOM for efficiancy
+function parsegrid(canvas, size = MIN_GRID_SIZE) {
+  // Create a fragment for better performance
+  const fragment = document.createDocumentFragment();
+
+  // Set grid styles
+  canvas.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  canvas.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+  // Create cells and append them to the fragment
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
-      html_childs += `
-      <div class="cell" 
-      data-cellref="R${i + 1}C${j + 1}">
-      </div>`;
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.setAttribute("data-cellref", `R${i + 1}C${j + 1}`);
+      fragment.appendChild(cell);
     }
   }
 
-  canvas.innerHTML = html_childs;
+  // Append the fragment to the canvas
+  canvas.innerHTML = ""; // Clear any existing cells
+  canvas.appendChild(fragment);
+
+  // Bind events to cells
   cell_click_events();
 }
 
-// This is project related function and specific to the project
-function cell_click_events() {
-  // make input to canvas
+// *********************************************************************************
+// this is my version of code
+//
+// function cell_click_events(inputMethod = "click") {
+//   // make input to canvas
+//   const cells = document.querySelectorAll(".cell");
+
+//   cells.forEach((cell) => {
+//     cell.addEventListener(inputMethod, function (e) {
+//       if (pencil.checked) {
+//         let currentColor = color.value;
+//         if (random.checked) {
+//           currentColor = generateRandomColor();
+//         }
+//         e.target.setAttribute("style", `background-color:${currentColor}`);
+//       } else if (eraser.checked) {
+//         e.target.setAttribute("style", `background-color:#ffffff`);
+//       }
+//     });
+//   });
+// }
+// *********************************************************************************
+
+// Update cell interaction based on hover mode
+function cell_click_events(inputMethod = "click") {
+  // Get all the cells in the canvas
   const cells = document.querySelectorAll(".cell");
 
+  // Add event listeners based on the current input method (click or mouseover)
   cells.forEach((cell) => {
-    cell.addEventListener("click", function (e) {
-      if (pencil.checked) {
-        let currentColor = color.value;
-        if (random.checked) {
-          currentColor = generateRandomColor();
-        }
-        e.target.setAttribute("style", `background-color:${currentColor}`);
-      } else if (eraser.checked) {
-        e.target.setAttribute("style", `background-color:#ffffff`);
-      }
-    });
+    cell.removeEventListener("click", handleCellEvent);
+    cell.removeEventListener("mouseover", handleCellEvent);
+
+    if (inputMethod === "mouseover") {
+      cell.addEventListener("mouseover", handleCellEvent); // Hover Mode
+    } else {
+      cell.addEventListener("click", handleCellEvent); // Click Mode
+    }
   });
 }
+
+// Event handler for cell interactions
+function handleCellEvent(e) {
+  const cell = e.target;
+
+  // If pencil is selected, apply color
+  if (pencil.checked) {
+    let currentColor = color.value;
+    if (random.checked) {
+      currentColor = generateRandomColor(); // Random color if the checkbox is checked
+    }
+    cell.style.backgroundColor = currentColor;
+  }
+  // If eraser is selected, clear the cell
+  else if (eraser.checked) {
+    cell.style.backgroundColor = "#ffffff"; // Erase by setting background to white
+  }
+}
+
+// Add event listener to hovermode checkbox
+hovermode.addEventListener("change", function () {
+  // If hovermode is checked, use 'mouseover' event; otherwise, use 'click' event
+  if (hovermode.checked) {
+    // Change the interaction method to 'mouseover'
+    cell_click_events("mouseover");
+  } else {
+    // Change the interaction method back to 'click'
+    cell_click_events("click");
+  }
+});
 
 // Creates random color in rgba format
 function generateRandomColor() {
