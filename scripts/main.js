@@ -195,3 +195,50 @@ menuBtn.addEventListener("click", function () {
     }, 500);
   }
 });
+
+// =======================================================================
+// ===================== DOWNLOAD ART BUTTON =============================
+// =======================================================================
+// Get the necessary elements
+const downloadBtn = document.querySelector("#downloadBtn");
+
+// Function to capture the canvas state and generate an image for download
+function downloadArt() {
+  // Create a temporary canvas to draw the grid as an image
+  const tempCanvas = document.createElement("canvas");
+  const context = tempCanvas.getContext("2d");
+
+  // Get the grid size and set the temp canvas size accordingly
+  const gridSize = document.querySelectorAll(".cell").length;
+  const cells = document.querySelectorAll(".cell");
+  const cellSize = cells[0].offsetWidth; // Assuming all cells are the same size
+
+  // Set the size of the temporary canvas to match the grid size
+  tempCanvas.width = Math.sqrt(gridSize) * cellSize; // Width
+  tempCanvas.height = Math.sqrt(gridSize) * cellSize; // Height
+
+  // Loop through each cell and draw it onto the temporary canvas
+  cells.forEach((cell, index) => {
+    const row = Math.floor(index / Math.sqrt(gridSize));
+    const col = index % Math.sqrt(gridSize);
+
+    // Get the background color of the cell
+    const color = window.getComputedStyle(cell).backgroundColor;
+
+    // Draw the color onto the temporary canvas
+    context.fillStyle = color;
+    context.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+  });
+
+  // Convert the canvas to a data URL (image format)
+  const imageData = tempCanvas.toDataURL("image/png");
+
+  // Create a temporary download link
+  const downloadLink = document.createElement("a");
+  downloadLink.href = imageData;
+  downloadLink.download = "art.png"; // File name for download
+  downloadLink.click(); // Trigger the download
+}
+
+// Add event listener to the download button
+downloadBtn.addEventListener("click", downloadArt);

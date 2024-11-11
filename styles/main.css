@@ -45,6 +45,10 @@ main {
   display: grid;
 }
 
+.cell {
+  background-color: #fff;
+}
+
 .cell:hover {
   background-color: #aaaaaa34;
   border: 0.5px solid lightgray;
