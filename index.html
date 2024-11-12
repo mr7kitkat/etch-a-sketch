@@ -11,54 +11,100 @@
   </head>
   <body>
     <main>
+      <button id="menubtn" class="btn">
+        <img src="./images/menubtn.png" alt="" />
+      </button>
       <section class="canvas"></section>
-      <button id="menubtn" data-status="0">MENU</button>
       <section class="menu">
-        <!-- 1st tool -->
-        <label for="pencil" class="tool">
-          <figure>
-            <input
-              type="radio"
-              name="input"
-              id="pencil"
-              class="hidden"
-              checked
-            />
-            <img src="./images/pencil.png" alt="pencil image" />
-            <figcaption class="text">Pencil</figcaption>
-          </figure>
-        </label>
-        <!-- 2nd tool -->
-        <label for="eraser" class="tool">
-          <figure>
-            <input type="radio" name="input" id="eraser" class="hidden" />
-            <img src="./images/eraser.png" alt="eraser image" />
-            <figcaption class="text">Eraser</figcaption>
-          </figure>
-        </label>
-        <!-- 3rd tool -->
-        <label for="random" class="tool">
-          <input type="checkbox" name="random" id="random" />
-          <span class="text">Random Color</span>
-        </label>
-        <!-- 4th tool -->
+        <div class="row hidden" id="hiddenRow">
+          <button class="btn close" id="closeMenuBtn">X</button>
+        </div>
+        <div class="row">
+          <h2>Input Tools</h2>
+          <div class="toolset">
+            <!-- Pencil -->
+            <label for="pencil">
+              <figure class="tool">
+                <input
+                  type="radio"
+                  name="input"
+                  id="pencil"
+                  class="hidden"
+                  checked
+                />
+                <img src="./images/pencil.png" alt="pencil image" />
+                <figcaption class="toolname">Pencil</figcaption>
+              </figure>
+            </label>
 
-        <label for="hovermode" class="tool">
-          <input type="checkbox" name="hovermode" id="hovermode" />
-          <span class="text">Hover Mode</span>
-        </label>
+            <!-- Eraser -->
+            <label for="eraser">
+              <figure class="tool">
+                <input type="radio" name="input" id="eraser" class="hidden" />
+                <img src="./images/eraser.png" alt="eraser image" />
+                <figcaption class="toolname">Eraser</figcaption>
+              </figure>
+            </label>
 
-        <!-- 5th tool -->
-        <label for="color" class="tool" id="currentColor">
-          <input type="color" name="color" id="color" value="#000000" />
-          <span class="text">Current Color</span>
-        </label>
+            <!-- Color -->
+            <label for="color" class="tool" id="currentColor">
+              <input type="color" name="color" id="color" value="#000000" />
+              <span class="toolname">Current Color</span>
+            </label>
 
-        <!-- 6th tool -->
+            <!-- Random Color -->
+            <label for="random" class="tool">
+              <input type="checkbox" name="random" id="random" />
+              <span class="toolname">Random Color</span>
+            </label>
 
-        <div for="gridSize" class="tool">
-          <input type="number" id="gridSize" value="16" min="16" max="100" />
-          <button id="makeGrid" class="btn">Make Grid</button>
+            <!-- Hover Mode -->
+            <label for="hovermode" class="tool">
+              <input type="checkbox" name="hovermode" id="hovermode" />
+              <span class="toolname">Hover Mode</span>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <h2>Grid Tools</h2>
+          <div class="toolset">
+            <div for="gridSize" class="tool" id="gridSizeInput">
+              <input
+                type="number"
+                id="gridSize"
+                value="16"
+                min="16"
+                max="100"
+              />
+              <button id="makeGrid" class="btn">Make Grid</button>
+            </div>
+
+            <label for="showGrid" class="tool">
+              <figure class="tool">
+                <input
+                  type="checkbox"
+                  name="showGrid"
+                  id="showGrid"
+                  class="hidden"
+                />
+                <img src="./images/grid.png" alt="eraser image" />
+                <figcaption class="toolname">Show Grid</figcaption>
+              </figure>
+            </label>
+
+            <label for="clearGrid" class="tool">
+              <figure class="tool">
+                <input
+                  type="checkbox"
+                  name="clearGrid"
+                  id="clearGrid"
+                  class="hidden"
+                />
+                <img src="./images/clear.png" alt="eraser image" />
+                <figcaption class="toolname">Clear Grid</figcaption>
+              </figure>
+            </label>
+          </div>
         </div>
 
         <!-- 7th tool -->

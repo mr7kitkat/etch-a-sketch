@@ -9,6 +9,7 @@ const color = document.querySelector("#color");
 const hovermode = document.querySelector("#hovermode");
 const random = document.querySelector("#random");
 const menuBtn = document.querySelector("#menubtn");
+const closeMenuBtn = document.querySelector("#closeMenuBtn");
 const gridSize = document.querySelector("#gridSize");
 const makeGrid = document.querySelector("#makeGrid");
 const MIN_GRID_SIZE = 16;
@@ -180,20 +181,15 @@ function generateRandomColor() {
 // ==================================================
 // Styling for menu popup
 menuBtn.addEventListener("click", function () {
-  if (this.dataset.status == 0) {
-    menu.classList.add("animate");
-    this.dataset.status = 1;
-    this.innerText = "CLOSE";
-  } else if (this.dataset.status == 1) {
-    this.dataset.status = 0;
-    this.innerText = "MENU";
+  menu.classList.add("animate");
+});
 
-    menu.classList.add("remove");
-    setTimeout(() => {
-      menu.classList.remove("animate");
-      menu.classList.remove("remove");
-    }, 500);
-  }
+closeMenuBtn.addEventListener("click", function () {
+  menu.classList.add("remove");
+  setTimeout(() => {
+    menu.classList.remove("animate");
+    menu.classList.remove("remove");
+  }, 500);
 });
 
 // =======================================================================
