@@ -6,6 +6,8 @@ const canvas = document.querySelector(".canvas");
 const pencil = document.querySelector("#pencil");
 const eraser = document.querySelector("#eraser");
 const color = document.querySelector("#color");
+const showGrid = document.querySelector("#showGrid");
+const clearGrid = document.querySelector("#clearGrid");
 const hovermode = document.querySelector("#hovermode");
 const random = document.querySelector("#random");
 const menuBtn = document.querySelector("#menubtn");
@@ -31,6 +33,23 @@ makeGrid.addEventListener("click", function () {
     `);
     gridSize.value = 16;
   }
+});
+
+// Show grid lines
+showGrid.addEventListener("click", function (e) {
+  console.log(e.target.checked);
+  if (e.target.checked) {
+    canvas.classList.add("showGrid");
+  } else {
+    canvas.classList.remove("showGrid");
+  }
+});
+
+// clear canvas
+clearGrid.addEventListener("click", function () {
+  document.querySelectorAll(".cell").forEach((cell) => {
+    cell.style.backgroundColor = "#ffffff";
+  });
 });
 
 // ==================================================
