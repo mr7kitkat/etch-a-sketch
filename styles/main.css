@@ -155,8 +155,8 @@ input:not([form="number"]),
 /* Menu btn */
 #menubtn {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 0px;
+  left: 0px;
   height: auto;
   width: 28px;
   padding: 4px;
@@ -198,5 +198,23 @@ input:not([form="number"]),
   #menubtn,
   #hiddenRow {
     display: initial;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .menu {
+    width: 100vw;
+  }
+
+  .toolset {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 4px solid #000;
+  }
+
+  #gridSizeInput {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }
